@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, viewport-fit=cover">
     <meta name="description" content="Presentación educativa sobre el sistema binario: pares binarios, generaciones y niveles, derrame automático y bonificaciones por generación.">
     <meta name="keywords" content="sistema binario, pares binarios, generaciones, niveles, MLM, red binaria, derrame, spillover, bonificaciones">
-    <meta name="author" content="Sistema Binario Educativo">
+    <meta name="author" content="Máster Daniel Portillo - Sistema Binario Educativo">
     <title>Sistema Binario: Pares, Generaciones y Bonificaciones</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,19 +38,27 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
             
-            --nav-height: 80px;
+            --nav-height: 60px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             
             --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Space Grotesk', 'Inter', sans-serif;
-            --font-scale: 1;
-            --font-xs: clamp(calc(0.7rem * var(--font-scale)), calc(2vw * var(--font-scale)), calc(0.8rem * var(--font-scale)));
-            --font-sm: clamp(calc(0.8rem * var(--font-scale)), calc(2.5vw * var(--font-scale)), calc(0.9rem * var(--font-scale)));
-            --font-base: clamp(calc(1rem * var(--font-scale)), calc(3vw * var(--font-scale)), calc(1.1rem * var(--font-scale)));
-            --font-lg: clamp(calc(1.2rem * var(--font-scale)), calc(4vw * var(--font-scale)), calc(1.4rem * var(--font-scale)));
-            --font-xl: clamp(calc(1.5rem * var(--font-scale)), calc(5vw * var(--font-scale)), calc(2rem * var(--font-scale)));
-            --font-2xl: clamp(calc(2rem * var(--font-scale)), calc(6vw * var(--font-scale)), calc(2.8rem * var(--font-scale)));
-            --font-3xl: clamp(calc(2.5rem * var(--font-scale)), calc(7vw * var(--font-scale)), calc(4rem * var(--font-scale)));
+            
+            /* Escala de fuente independiente para contenido */
+            --content-font-scale: 1;
+            --content-font-xs: clamp(calc(0.7rem * var(--content-font-scale)), calc(2vw * var(--content-font-scale)), calc(0.8rem * var(--content-font-scale)));
+            --content-font-sm: clamp(calc(0.8rem * var(--content-font-scale)), calc(2.5vw * var(--content-font-scale)), calc(0.9rem * var(--content-font-scale)));
+            --content-font-base: clamp(calc(1rem * var(--content-font-scale)), calc(3vw * var(--content-font-scale)), calc(1.1rem * var(--content-font-scale)));
+            --content-font-lg: clamp(calc(1.2rem * var(--content-font-scale)), calc(4vw * var(--content-font-scale)), calc(1.4rem * var(--content-font-scale)));
+            --content-font-xl: clamp(calc(1.5rem * var(--content-font-scale)), calc(5vw * var(--content-font-scale)), calc(2rem * var(--content-font-scale)));
+            --content-font-2xl: clamp(calc(2rem * var(--content-font-scale)), calc(6vw * var(--content-font-scale)), calc(2.8rem * var(--content-font-scale)));
+            --content-font-3xl: clamp(calc(2.5rem * var(--content-font-scale)), calc(7vw * var(--content-font-scale)), calc(4rem * var(--content-font-scale)));
+            
+            /* Escala fija para navegación (no cambia) */
+            --nav-font-xs: clamp(0.7rem, 2vw, 0.8rem);
+            --nav-font-sm: clamp(0.8rem, 2.5vw, 0.9rem);
+            --nav-font-base: clamp(1rem, 3vw, 1.1rem);
+            --nav-font-lg: clamp(1.2rem, 4vw, 1.4rem);
             
             --space-xs: clamp(5px, 1vw, 8px);
             --space-sm: clamp(10px, 2vw, 15px);
@@ -131,9 +139,10 @@
             margin-bottom: var(--space-lg);
         }
 
+        /* Fuentes para contenido que se escalan */
         h1 {
             font-family: var(--font-display);
-            font-size: var(--font-3xl);
+            font-size: var(--content-font-3xl);
             margin-bottom: var(--space-md);
             background: linear-gradient(135deg, var(--gold), var(--orange));
             -webkit-background-clip: text;
@@ -145,7 +154,7 @@
 
         h2 {
             font-family: var(--font-display);
-            font-size: var(--font-2xl);
+            font-size: var(--content-font-2xl);
             margin-bottom: var(--space-md);
             color: var(--gold);
             font-weight: 700;
@@ -154,7 +163,7 @@
 
         h3 {
             font-family: var(--font-display);
-            font-size: var(--font-lg);
+            font-size: var(--content-font-lg);
             margin: var(--space-sm) 0;
             color: var(--gold-light);
             font-weight: 600;
@@ -185,7 +194,7 @@
             padding: var(--space-xs) var(--space-sm);
             border-radius: 15px;
             font-weight: 700;
-            font-size: var(--font-xs);
+            font-size: var(--content-font-xs);
             white-space: nowrap;
             position: absolute;
             left: clamp(-120px, -25vw, -100px);
@@ -279,7 +288,7 @@
         .branch-indicator {
             position: absolute;
             top: -25px;
-            font-size: var(--font-xs);
+            font-size: var(--content-font-xs);
             font-weight: 700;
             color: var(--gold-light);
             text-align: center;
@@ -300,41 +309,6 @@
             opacity: 0.7;
         }
 
-        /* Leyenda */
-        .legend {
-            background: var(--glass-bg);
-            border-radius: 20px;
-            padding: var(--space-lg);
-            margin: var(--space-lg) 0;
-            border: 1px solid var(--glass-border);
-        }
-
-        .legend-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-md);
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
-
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .legend-color.founder { background: linear-gradient(135deg, var(--gold), var(--orange)); }
-        .legend-color.my-direct { background: linear-gradient(135deg, var(--my-direct), var(--green-light)); }
-        .legend-color.spillover { background: linear-gradient(135deg, var(--spillover), var(--blue-light)); }
-        .legend-color.my-generation { background: linear-gradient(135deg, var(--my-generation), #a78bfa); }
-        .legend-color.others-generation { background: linear-gradient(135deg, var(--others-generation), #fb923c); }
-        .legend-color.empty { background: rgba(255, 255, 255, 0.1); border: 2px dashed rgba(255, 255, 255, 0.3); }
-
         /* Cajas explicativas */
         .explanation-box {
             background: var(--glass-bg);
@@ -342,7 +316,7 @@
             border-radius: 20px;
             margin: var(--space-lg) 0;
             border: 1px solid var(--glass-border);
-            font-size: var(--font-base);
+            font-size: var(--content-font-base);
             line-height: 1.7;
             position: relative;
         }
@@ -387,7 +361,7 @@
 
         .comparison-card h4 {
             color: var(--gold);
-            font-size: var(--font-lg);
+            font-size: var(--content-font-lg);
             margin-bottom: var(--space-md);
             font-family: var(--font-display);
         }
@@ -411,6 +385,7 @@
             padding: var(--space-sm) var(--space-md);
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: var(--content-font-sm);
         }
 
         .bonus-table th {
@@ -443,11 +418,18 @@
             backdrop-filter: blur(30px);
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: var(--space-md);
-            padding: var(--space-md);
+            justify-content: space-between;
+            padding: 0 var(--space-md);
             z-index: 1000;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            flex: 1;
         }
 
         .nav-section {
@@ -460,14 +442,14 @@
             background: var(--glass-bg);
             color: white;
             border: 1px solid var(--glass-border);
-            padding: clamp(10px, 2.5vw, 15px) clamp(15px, 3.5vw, 20px);
-            border-radius: 25px;
+            padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
             transition: var(--transition);
-            font-size: var(--font-sm);
-            min-width: clamp(40px, 10vw, 50px);
-            min-height: clamp(40px, 10vw, 50px);
+            font-size: var(--nav-font-sm);
+            min-width: clamp(32px, 8vw, 40px);
+            min-height: clamp(32px, 8vw, 40px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -477,7 +459,7 @@
         .nav-button:hover:not(:disabled) {
             background: linear-gradient(135deg, var(--gold), var(--orange));
             color: #333;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         .nav-button.active {
@@ -496,13 +478,52 @@
             background: linear-gradient(135deg, var(--gold), var(--orange));
             color: #333;
             font-weight: 700;
-            font-size: var(--font-lg);
+            font-size: var(--nav-font-lg);
+        }
+
+        /* Controles de fuente */
+        .font-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: var(--space-md);
+        }
+
+        .font-control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: var(--nav-font-xs);
+            min-width: 28px;
+            min-height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+        }
+
+        .font-control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .font-size-display {
+            color: var(--gold-light);
+            font-size: var(--nav-font-xs);
+            font-weight: 600;
+            min-width: 35px;
+            text-align: center;
         }
 
         /* Responsive */
         @media screen and (max-width: 480px) {
             :root {
-                --nav-height: 70px;
+                --nav-height: 50px;
                 --node-size: clamp(35px, 12vw, 50px);
                 --node-font: clamp(0.6rem, 3vw, 0.8rem);
                 --node-gap: clamp(5px, 2vw, 10px);
@@ -533,18 +554,27 @@
             .bonus-table th,
             .bonus-table td {
                 padding: var(--space-xs) var(--space-sm);
-                font-size: var(--font-sm);
             }
 
             /* Responsive para lámina de información personal */
-            #slide-11 > div:first-of-type {
+            #slide-10 > div:first-of-type {
                 flex-direction: column !important;
                 gap: var(--space-lg) !important;
             }
 
-            #slide-11 img {
+            #slide-10 img {
                 width: clamp(150px, 40vw, 200px) !important;
                 height: clamp(150px, 40vw, 200px) !important;
+            }
+
+            .font-controls {
+                margin-right: var(--space-sm);
+            }
+
+            .font-control-btn {
+                padding: 4px 6px;
+                min-width: 24px;
+                min-height: 24px;
             }
         }
 
@@ -605,7 +635,7 @@
 
             <div class="explanation-box">
                 <h3>🔑 Concepto Clave: DERRAME + PARES</h3>
-                <p style="text-align: center; font-size: var(--font-lg);">
+                <p style="text-align: center; font-size: var(--content-font-lg);">
                     <span class="concept-highlight">Los pares se pueden formar con personas de OTROS</span>, 
                     no solo con tus generaciones directas. ¡Cada par te da mínimo $5.60 y hasta $8.40 
                     si es de tu 10ma generación!
@@ -620,7 +650,7 @@
             </header>
 
             <div class="explanation-box">
-                <p style="text-align: center; font-size: var(--font-lg);">
+                <p style="text-align: center; font-size: var(--content-font-lg);">
                     Un <span class="highlight">PAR BINARIO</span> se forma cuando tienes 
                     <strong>1 persona en la rama izquierda</strong> y <strong>1 persona en la rama derecha</strong> 
                     en el mismo nivel.
@@ -659,7 +689,7 @@
 
             <div class="explanation-box" style="background: rgba(16, 185, 129, 0.1);">
                 <h3>💰 Cálculo de Puntos:</h3>
-                <p style="font-size: var(--font-lg);">
+                <p style="font-size: var(--content-font-lg);">
                     • <strong>Nivel 1:</strong> 1 par × 56 pts al 10% = <span style="color: var(--green-light);">$5.60</span><br>
                     • <strong>Nivel 2:</strong> 2 pares × 56 pts al 10% = <span style="color: var(--green-light);">$11.20</span><br>
                     • <strong>Total:</strong> <span style="color: var(--green-light); font-size: 1.3em;">$16.80</span>
@@ -714,24 +744,6 @@
                         <div class="node empty">?</div>
                         <div class="node empty">?</div>
                         <div class="node empty">?</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="legend">
-                <h3>Leyenda:</h3>
-                <div class="legend-grid">
-                    <div class="legend-item">
-                        <div class="legend-color founder"></div>
-                        <span>Tú (Fundador)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color my-direct"></div>
-                        <span>Tus inscritos directos (Gen 1)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color empty"></div>
-                        <span>Posiciones vacías</span>
                     </div>
                 </div>
             </div>
@@ -849,28 +861,6 @@
                 </div>
             </div>
 
-            <div class="legend">
-                <h3>Leyenda:</h3>
-                <div class="legend-grid">
-                    <div class="legend-item">
-                        <div class="legend-color founder"></div>
-                        <span>Tú (Fundador)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color my-direct"></div>
-                        <span>Tu inscrito directo</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color spillover"></div>
-                        <span>Derrame de otros</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color my-generation"></div>
-                        <span>Tu Generación 2</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="explanation-box">
                 <h3>🎯 Lo que pasó aquí:</h3>
                 <p>
@@ -883,17 +873,16 @@
             </div>
         </main>
 
-        <!-- SLIDE 6: Sistema de Bonificaciones -->
+        <!-- SLIDE 6: Proyección de Crecimiento (antes lámina 9) -->
         <main class="slide hidden" id="slide-6">
             <header class="slide-header">
-                <h2>Sistema de Bonificaciones por Generación</h2>
+                <h2>Proyección: El Poder de las Generaciones Profundas</h2>
             </header>
 
             <div class="explanation-box">
-                <h3>🎯 Reglas de Bonificación:</h3>
-                <p>
-                    El sistema te da ganancias dependiendo de 
-                    <strong>qué generación forma los pares</strong> en tu estructura.
+                <h3>🚀 Escenario: 10 Niveles Completos</h3>
+                <p style="text-align: center;">
+                    Si logras desarrollar 10 niveles completos con <strong>tus propias generaciones</strong>
                 </p>
             </div>
 
@@ -901,60 +890,77 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Nivel</th>
+                            <th>Pares</th>
                             <th>Generación</th>
-                            <th>Si es TU Generación</th>
-                            <th>Si es Spillover</th>
+                            <th>% Ganancia</th>
+                            <th>Total USD</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Gen 1-5</td>
-                            <td class="generation-own">Ganancia al 10%</td>
-                            <td class="generation-spillover">Ganancia al 10%</td>
+                            <td>1-5</td>
+                            <td>31</td>
+                            <td>1-5</td>
+                            <td class="generation-own">10%</td>
+                            <td class="generation-own">$173.60</td>
                         </tr>
                         <tr>
-                            <td>Gen 6</td>
-                            <td class="generation-own">Ganancia al 11%</td>
-                            <td class="generation-spillover">Ganancia al 10%</td>
+                            <td>6</td>
+                            <td>32</td>
+                            <td>6</td>
+                            <td class="generation-own">11%</td>
+                            <td class="generation-own">$197.12</td>
                         </tr>
                         <tr>
-                            <td>Gen 7</td>
-                            <td class="generation-own">Ganancia al 12%</td>
-                            <td class="generation-spillover">Ganancia al 10%</td>
+                            <td>7</td>
+                            <td>64</td>
+                            <td>7</td>
+                            <td class="generation-own">12%</td>
+                            <td class="generation-own">$430.08</td>
                         </tr>
                         <tr>
-                            <td>Gen 8</td>
-                            <td class="generation-own">Ganancia al 13%</td>
-                            <td class="generation-spillover">Ganancia al 10%</td>
+                            <td>8</td>
+                            <td>128</td>
+                            <td>8</td>
+                            <td class="generation-own">13%</td>
+                            <td class="generation-own">$931.84</td>
                         </tr>
                         <tr>
-                            <td>Gen 9</td>
-                            <td class="generation-own">Ganancia al 14%</td>
-                            <td class="generation-spillover">Ganancia al 10%</td>
+                            <td>9</td>
+                            <td>256</td>
+                            <td>9</td>
+                            <td class="generation-own">14%</td>
+                            <td class="generation-own">$2,007.04</td>
                         </tr>
                         <tr>
-                            <td>Gen 10</td>
-                            <td class="generation-own">Ganancia al 15%</td>
-                            <td class="generation-spillover">Ganancia al 10%</td>
+                            <td>10</td>
+                            <td>512</td>
+                            <td>10</td>
+                            <td class="generation-own">15%</td>
+                            <td class="generation-own">$4,300.80</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="explanation-box" style="background: rgba(251, 191, 36, 0.1);">
-                <h3>🔑 Diferencia Clave:</h3>
-                <p style="text-align: center; font-size: var(--font-lg);">
-                    <strong>TUS GENERACIONES 1-5:</strong> Ganancia al 10% (56 pts = $5.60)<br>
-                    <strong>TUS GENERACIONES 6-10:</strong> Ganancias crecientes (11%, 12%, 13%, 14%, 15%)<br>
-                    <strong>SPILLOVER:</strong> Siempre ganancia al 10%, sin importar la generación
+                <h3>🎯 Resultados Totales:</h3>
+                <p style="text-align: center; font-size: var(--content-font-xl);">
+                    <strong>TOTAL MENSUAL:</strong> <span style="color: var(--gold-light);">$8,040.48</span><br>
+                    <br>
+                    <span style="font-size: var(--content-font-lg);">
+                        <strong style="color: var(--green-light);">Con 10 niveles completos de TUS generaciones</strong><br>
+                        (1,023 pares totales con ganancias escalonadas)
+                    </span>
                 </p>
             </div>
 
             <div class="explanation-box">
-                <h3>💡 Estrategia Inteligente:</h3>
+                <h3>⚡ Comparación: Solo con Spillover</h3>
                 <p>
-                    Por eso es importante trabajar para crear <strong>tus propias generaciones profundas</strong>. 
-                    Mientras más profundo llegues con tu trabajo directo, más bonificaciones obtienes.
+                    Si todos fueran spillover (ganancia al 10% fija), el total sería: <strong>$5,728.00</strong><br>
+                    <span style="color: var(--gold-light);">Diferencia: +$2,312.48</span> por desarrollar tus propias generaciones profundas.
                 </p>
             </div>
         </main>
@@ -1016,7 +1022,7 @@
 
             <div class="explanation-box" style="background: rgba(16, 185, 129, 0.1);">
                 <h3>💰 Cálculo Detallado:</h3>
-                <p style="font-size: var(--font-lg);">
+                <p style="font-size: var(--content-font-lg);">
                     <strong>NIVEL 1:</strong> 1 par × 56 pts al 10% = <span style="color: var(--blue-light);">$5.60</span><br>
                     <strong>NIVEL 2:</strong> 2 pares × 56 pts al 10% = <span style="color: var(--blue-light);">$11.20</span><br>
                     <strong>NIVEL 3:</strong> 1 par × 56 pts al 10% = <span style="color: var(--green-light);">$5.60</span><br>
@@ -1036,15 +1042,15 @@
             </div>
         </main>
 
-        <!-- SLIDE 8: Balance Binario - NUEVO -->
-        <main class="slide hidden" id="slide-10">
+        <!-- SLIDE 8: Balance Binario -->
+        <main class="slide hidden" id="slide-8">
             <header class="slide-header">
                 <h2>🎯 Requisito Clave: Balance Binario</h2>
             </header>
 
             <div class="explanation-box">
                 <h3>⚠️ Regla Fundamental del Sistema:</h3>
-                <p style="text-align: center; font-size: var(--font-lg);">
+                <p style="text-align: center; font-size: var(--content-font-lg);">
                     Para <strong>COBRAR</strong> los puntos generados en un lado de tu estructura, 
                     <span class="concept-highlight">DEBES tener también puntos en el lado opuesto</span>.
                 </p>
@@ -1122,98 +1128,6 @@
             </div>
         </main>
 
-        <!-- SLIDE 9: Proyección de Crecimiento -->
-        <main class="slide hidden" id="slide-8">
-            <header class="slide-header">
-                <h2>Proyección: El Poder de las Generaciones Profundas</h2>
-            </header>
-
-            <div class="explanation-box">
-                <h3>🚀 Escenario: 10 Niveles Completos</h3>
-                <p style="text-align: center;">
-                    Si logras desarrollar 10 niveles completos con <strong>tus propias generaciones</strong>
-                </p>
-            </div>
-
-            <div class="bonus-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nivel</th>
-                            <th>Pares</th>
-                            <th>Generación</th>
-                            <th>% Ganancia</th>
-                            <th>Total USD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1-5</td>
-                            <td>31</td>
-                            <td>1-5</td>
-                            <td class="generation-own">10%</td>
-                            <td class="generation-own">$173.60</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>32</td>
-                            <td>6</td>
-                            <td class="generation-own">11%</td>
-                            <td class="generation-own">$197.12</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>64</td>
-                            <td>7</td>
-                            <td class="generation-own">12%</td>
-                            <td class="generation-own">$430.08</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>128</td>
-                            <td>8</td>
-                            <td class="generation-own">13%</td>
-                            <td class="generation-own">$931.84</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>256</td>
-                            <td>9</td>
-                            <td class="generation-own">14%</td>
-                            <td class="generation-own">$2,007.04</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>512</td>
-                            <td>10</td>
-                            <td class="generation-own">15%</td>
-                            <td class="generation-own">$4,300.80</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="explanation-box" style="background: rgba(251, 191, 36, 0.1);">
-                <h3>🎯 Resultados Totales:</h3>
-                <p style="text-align: center; font-size: var(--font-xl);">
-                    <strong>TOTAL MENSUAL:</strong> <span style="color: var(--gold-light);">$8,040.48</span><br>
-                    <br>
-                    <span style="font-size: var(--font-lg);">
-                        <strong style="color: var(--green-light);">Con 10 niveles completos de TUS generaciones</strong><br>
-                        (1,023 pares totales con ganancias escalonadas)
-                    </span>
-                </p>
-            </div>
-
-            <div class="explanation-box">
-                <h3>⚡ Comparación: Solo con Spillover</h3>
-                <p>
-                    Si todos fueran spillover (ganancia al 10% fija), el total sería: <strong>$5,728.00</strong><br>
-                    <span style="color: var(--gold-light);">Diferencia: +$2,312.48</span> por desarrollar tus propias generaciones profundas.
-                </p>
-            </div>
-        </main>
-
         <!-- SLIDE 9: Resumen Final -->
         <main class="slide hidden" id="slide-9">
             <header class="slide-header">
@@ -1254,7 +1168,7 @@
 
             <div class="explanation-box" style="background: rgba(251, 191, 36, 0.1);">
                 <h3>🔑 La Fórmula del Éxito:</h3>
-                <p style="text-align: center; font-size: var(--font-lg);">
+                <p style="text-align: center; font-size: var(--content-font-lg);">
                     <strong>SPILLOVER te da velocidad inicial</strong><br>
                     <strong>TUS GENERACIONES PROFUNDAS te dan bonificaciones a largo plazo</strong><br>
                     <strong>BALANCE BINARIO te permite cobrar tus puntos</strong>
@@ -1279,7 +1193,7 @@
 
             <div class="explanation-box" style="text-align: center;">
                 <h3>🎯 ¡Ahora dominas el sistema binario!</h3>
-                <p style="font-size: var(--font-xl); color: var(--gold-light);">
+                <p style="font-size: var(--content-font-xl); color: var(--gold-light);">
                     <strong>PARES = 56 puntos cada uno</strong><br>
                     <strong>GANANCIAS = 10% a 15% según tu generación</strong><br>
                     <strong>BALANCE BINARIO = Clave para cobrar</strong><br>
@@ -1288,11 +1202,11 @@
             </div>
         </main>
 
-        <!-- SLIDE 11: Información Personal -->
-        <main class="slide hidden" id="slide-11">
+        <!-- SLIDE 10: Información Personal -->
+        <main class="slide hidden" id="slide-10">
             <style>
-                /* Paleta ejecutiva exclusiva para lámina 11 */
-                #slide-11 {
+                /* Paleta ejecutiva exclusiva para lámina 10 */
+                #slide-10 {
                     --exec-navy: #1e3a8a;
                     --exec-silver: #64748b;
                     --exec-gold: #d4af37;
@@ -1305,26 +1219,26 @@
                     background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #374151 100%);
                 }
 
-                #slide-11 .explanation-box {
+                #slide-10 .explanation-box {
                     background: linear-gradient(135deg, rgba(226, 232, 240, 0.1), rgba(148, 163, 184, 0.05));
                     border: 2px solid var(--exec-gold);
                     backdrop-filter: blur(20px);
                 }
 
-                #slide-11 h1 {
+                #slide-10 h1 {
                     background: linear-gradient(135deg, var(--exec-gold), var(--exec-dark-gold));
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
                 }
 
-                #slide-11 .role-card {
+                #slide-10 .role-card {
                     background: linear-gradient(135deg, rgba(30, 58, 138, 0.15), rgba(55, 65, 81, 0.1));
                     border: 1px solid rgba(212, 175, 55, 0.3);
                     backdrop-filter: blur(15px);
                 }
 
-                #slide-11 .mission-section {
+                #slide-10 .mission-section {
                     background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(55, 65, 81, 0.08));
                     border: 1px solid var(--exec-silver);
                 }
@@ -1339,7 +1253,7 @@
                 <!-- Foto profesional -->
                 <div style="flex: 0 0 auto; text-align: center;">
                     <img src="https://i.ibb.co/M5x3bSdx/Foto-profesional.png" 
-                         alt="Maestro Daniel Portillo" 
+                         alt="Máster Daniel Portillo" 
                          style="
                             width: clamp(200px, 25vw, 300px);
                             height: clamp(200px, 25vw, 300px);
@@ -1357,13 +1271,25 @@
                 <div style="flex: 1; min-width: 300px; max-width: 600px;">
                     <div class="explanation-box" style="margin: 0;">
                         <h1 style="margin-bottom: var(--space-lg); text-align: center; font-size: clamp(1.8rem, 5vw, 2.5rem);">
-                            MAESTRO DANIEL PORTILLO
+                            MÁSTER DANIEL PORTILLO
                         </h1>
                         
                         <div style="text-align: center; margin-bottom: var(--space-lg);">
                             <div class="role-card" style="padding: var(--space-md); border-radius: 15px; margin: var(--space-sm) 0;">
                                 <h3 style="color: var(--exec-platinum); margin: 0; font-size: clamp(1rem, 3vw, 1.3rem);">
-                                    🏥 ENFERMERO PROFESIONAL
+                                    🎓 LICENCIADO EN ENFERMERÍA
+                                </h3>
+                            </div>
+                            
+                            <div class="role-card" style="padding: var(--space-md); border-radius: 15px; margin: var(--space-sm) 0;">
+                                <h3 style="color: var(--exec-platinum); margin: 0; font-size: clamp(1rem, 3vw, 1.3rem);">
+                                    🌍 LICENCIADO EN IDIOMA INGLÉS
+                                </h3>
+                            </div>
+                            
+                            <div class="role-card" style="padding: var(--space-md); border-radius: 15px; margin: var(--space-sm) 0;">
+                                <h3 style="color: var(--exec-platinum); margin: 0; font-size: clamp(1rem, 3vw, 1.3rem);">
+                                    🎯 MÁSTER EN DOCENCIA UNIVERSITARIA
                                 </h3>
                             </div>
                             
@@ -1375,10 +1301,10 @@
                             
                             <div class="role-card" style="padding: var(--space-md); border-radius: 15px; margin: var(--space-sm) 0;">
                                 <h3 style="color: var(--exec-platinum); margin: 0; font-size: clamp(1rem, 3vw, 1.3rem);">
-                                    💼 CONSULTOR AUTORIZADO
+                                    💼 ASESOR AUTORIZADO
                                 </h3>
                                 <p style="margin: var(--space-xs) 0 0 0; color: var(--exec-platinum); font-weight: 600; font-size: clamp(0.9rem, 2.5vw, 1.1rem);">
-                                    GANO EXCEL EL SALVADOR
+                                    GANO EXCEL INTERNACIONAL
                                 </p>
                             </div>
                         </div>
@@ -1393,7 +1319,8 @@
                 <p style="font-size: clamp(1rem, 3vw, 1.2rem); line-height: 1.8; color: var(--exec-platinum);">
                     Ayudar a las personas a comprender y dominar los <span style="background: rgba(212, 175, 55, 0.2); padding: 2px 6px; border-radius: 4px; font-weight: 600; color: var(--exec-gold);">sistemas binarios</span> 
                     para maximizar sus oportunidades de crecimiento financiero y desarrollo personal, 
-                    combinando mi experiencia en <strong style="color: var(--exec-gold);">salud</strong> y <strong style="color: var(--exec-gold);">educación</strong>.
+                    combinando mi formación en <strong style="color: var(--exec-gold);">salud</strong>, <strong style="color: var(--exec-gold);">educación</strong> y <strong style="color: var(--exec-gold);">comunicación internacional</strong> 
+                    con mi experiencia como catedrático y asesor en redes de mercadeo.
                 </p>
             </div>
 
@@ -1407,26 +1334,35 @@
 
     <!-- NAVEGACIÓN -->
     <nav class="navigation">
-        <div class="nav-section">
-            <button class="nav-button nav-arrow" id="prevBtn">←</button>
+        <!-- Controles de Fuente -->
+        <div class="font-controls">
+            <button class="font-control-btn" id="fontDecrease">A−</button>
+            <span class="font-size-display" id="fontSizeDisplay">100%</span>
+            <button class="font-control-btn" id="fontIncrease">A+</button>
         </div>
-        
-        <div class="nav-section">
-            <button class="nav-button active" data-slide="1">1</button>
-            <button class="nav-button" data-slide="2">2</button>
-            <button class="nav-button" data-slide="3">3</button>
-            <button class="nav-button" data-slide="4">4</button>
-            <button class="nav-button" data-slide="5">5</button>
-            <button class="nav-button" data-slide="6">6</button>
-            <button class="nav-button" data-slide="7">7</button>
-            <button class="nav-button" data-slide="8">8</button>
-            <button class="nav-button" data-slide="9">9</button>
-            <button class="nav-button" data-slide="10">10</button>
-            <button class="nav-button" data-slide="11">11</button>
-        </div>
-        
-        <div class="nav-section">
-            <button class="nav-button nav-arrow" id="nextBtn">→</button>
+
+        <!-- Navegación Principal -->
+        <div class="nav-main">
+            <div class="nav-section">
+                <button class="nav-button nav-arrow" id="prevBtn">←</button>
+            </div>
+            
+            <div class="nav-section">
+                <button class="nav-button active" data-slide="1">1</button>
+                <button class="nav-button" data-slide="2">2</button>
+                <button class="nav-button" data-slide="3">3</button>
+                <button class="nav-button" data-slide="4">4</button>
+                <button class="nav-button" data-slide="5">5</button>
+                <button class="nav-button" data-slide="6">6</button>
+                <button class="nav-button" data-slide="7">7</button>
+                <button class="nav-button" data-slide="8">8</button>
+                <button class="nav-button" data-slide="9">9</button>
+                <button class="nav-button" data-slide="10">10</button>
+            </div>
+            
+            <div class="nav-section">
+                <button class="nav-button nav-arrow" id="nextBtn">→</button>
+            </div>
         </div>
     </nav>
 
@@ -1434,7 +1370,11 @@
         class BinarySystemPresentation {
             constructor() {
                 this.currentSlide = 1;
-                this.totalSlides = 11;
+                this.totalSlides = 10;
+                this.fontScale = 1;
+                this.minFontScale = 0.7;
+                this.maxFontScale = 1.5;
+                this.fontStep = 0.1;
                 this.init();
             }
 
@@ -1443,11 +1383,14 @@
                 this.updateNavigation();
                 this.showSlide(1);
                 this.updateProgressBar();
+                this.updateFontSizeDisplay();
             }
 
             setupEventListeners() {
                 document.getElementById('prevBtn').addEventListener('click', () => this.prevSlide());
                 document.getElementById('nextBtn').addEventListener('click', () => this.nextSlide());
+                document.getElementById('fontIncrease').addEventListener('click', () => this.increaseFontSize());
+                document.getElementById('fontDecrease').addEventListener('click', () => this.decreaseFontSize());
 
                 document.querySelectorAll('[data-slide]').forEach(btn => {
                     btn.addEventListener('click', (e) => {
@@ -1461,7 +1404,8 @@
                     if (e.key === 'ArrowLeft') this.prevSlide();
                     if (e.key >= '1' && e.key <= '9') this.goToSlide(parseInt(e.key));
                     if (e.key === '0') this.goToSlide(10);
-                    if (e.key.toLowerCase() === 'i') this.goToSlide(11); // 'i' para información
+                    if (e.key === '+' || e.key === '=') this.increaseFontSize();
+                    if (e.key === '-') this.decreaseFontSize();
                 });
 
                 this.setupTouchGestures();
@@ -1552,16 +1496,43 @@
                 const progress = (this.currentSlide / this.totalSlides) * 100;
                 progressBar.style.width = progress + '%';
             }
+
+            increaseFontSize() {
+                if (this.fontScale < this.maxFontScale) {
+                    this.fontScale = Math.min(this.fontScale + this.fontStep, this.maxFontScale);
+                    this.updateFontScale();
+                }
+            }
+
+            decreaseFontSize() {
+                if (this.fontScale > this.minFontScale) {
+                    this.fontScale = Math.max(this.fontScale - this.fontStep, this.minFontScale);
+                    this.updateFontScale();
+                }
+            }
+
+            updateFontScale() {
+                document.documentElement.style.setProperty('--content-font-scale', this.fontScale.toString());
+                this.updateFontSizeDisplay();
+            }
+
+            updateFontSizeDisplay() {
+                const display = document.getElementById('fontSizeDisplay');
+                display.textContent = Math.round(this.fontScale * 100) + '%';
+            }
         }
 
         // Inicializar la presentación
         const presentation = new BinarySystemPresentation();
 
-        console.log('🎯 Presentación Sistema Binario CORREGIDA - V2.1');
+        console.log('🎯 Presentación Sistema Binario CORREGIDA - V3.0');
         console.log('🏆 Tema: Pares Binarios (56pts=$5.60 al 10%, hasta $8.40 al 15%)');
-        console.log('⚖️ Incluye: Balance Binario y Ganancias Escalonadas');
-        console.log('👨‍🏫 Instructor: Maestro Daniel Portillo - Gano Excel El Salvador');
-        console.log('⌨️ Navegación: Flechas, números 1-9, 0=slide 10, i=slide 11, espaciador');
+        console.log('⚖️ Incluye: Balance Binario (Lámina 8) y Ganancias Escalonadas');
+        console.log('📏 Lámina 6: Proyección de Generaciones Profundas (reubicada)');
+        console.log('🔧 Controles: A+/A- para tamaño de fuente, navegación independiente');
+        console.log('👨‍🏫 Instructor: Máster Daniel Portillo - Gano Excel Internacional');
+        console.log('⌨️ Navegación: Flechas, números 1-0, +/- para fuente, espaciador');
+        console.log('✅ 10 Láminas - Sin bonificaciones detalladas - Flujo optimizado');
     </script>
 </body>
 </html>
